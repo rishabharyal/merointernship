@@ -32,6 +32,8 @@ class InternshipController extends Controller
             $internships = $internships->where('user_id', $user->id);
         }
 
+        $internships = $internships->paginate(15);
+
         return view('admin.internships.index', compact('internships'));
     }
 
@@ -113,6 +115,6 @@ class InternshipController extends Controller
     {
         $internship->delete();
 
-        return redirect()->back()->with('success', 'Internship deleted successfully!')
+        return redirect()->back()->with('success', 'Internship deleted successfully!');
     }
 }

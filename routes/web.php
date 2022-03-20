@@ -20,3 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::namespace('Admin')->prefix('admin')->group(static function() {
+    Route::get('/', 'DashboardController@index');
+    Route::resource('internship', 'InternshipController');
+    Route::resource('organization', 'OrganizationController');
+    Route::resource('institution', 'InstitutionController');
+});

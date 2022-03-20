@@ -31,9 +31,9 @@
                 </button>
                 <div class="collapse show" id="home-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">Overview</a></li>
-                        <li><a href="#" class="link-dark rounded">Updates</a></li>
-                        <li><a href="#" class="link-dark rounded">Reports</a></li>
+                        <li><a href="{{ route('internship.index') }}" class="link-dark rounded">Internships</a></li>
+                        <li><a href="#" class="link-dark rounded">Companies</a></li>
+                        <li><a href="#" class="link-dark rounded">Institutions</a></li>
                     </ul>
                 </div>
             </li>
@@ -54,9 +54,11 @@
 
     <div class="b-divider"></div>
 
-    <div class="row">
-        <div class="col-12">
-            @yield('content')
+    <div class="flex-shrink">
+        <div class="row">
+            <div class="col-12">
+                @yield('content')
+            </div>
         </div>
     </div>
 </main>
