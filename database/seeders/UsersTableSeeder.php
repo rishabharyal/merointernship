@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
     {
         $user = User::create([
             'name' => 'Rishabh Aryal',
-            'email' => 'admin@merointernship.com.np',
+            'email' => 'admin@merointernship.com',
             'phone_number' => '9821413393',
             'city' => 'Kathmandu',
             'address' => 'Civil Homes, Dhapakhel',
@@ -25,5 +25,16 @@ class UsersTableSeeder extends Seeder
         ]);
 
         $user->assignRole('Admin');
+
+        $user = User::create([
+            'name' => 'Rishabh Aryal',
+            'email' => 'rishabh@alphatech.com.np',
+            'phone_number' => '9821413393',
+            'city' => 'Kathmandu',
+            'address' => 'Civil Homes, Dhapakhel',
+            'password' => bcrypt('password@123')
+        ]);
+
+        $user->assignRole('Company');
     }
 }

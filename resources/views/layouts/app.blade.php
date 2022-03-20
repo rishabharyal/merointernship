@@ -209,12 +209,12 @@
                             Connect with us
                         </h3>
                         <div class="py-3">
-                            <a class="px-3" href="#">
+                            <span class="px-3" href="#">
                                 <i class="fa-brands fa-facebook-f"></i>
-                                </span>
-                                <a href="#">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
+                            </span>
+                            <a href="#">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -241,11 +241,9 @@
     </div>
 </footer>
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0" nonce="Qtk3BkcM"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/script.js"></script>
+
 @yield('styles')
 @yield('scripts')
 </body>
+<script src="{{ asset('js/app.js') }}"></script>
 </html>

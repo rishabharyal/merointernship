@@ -15,13 +15,16 @@ return new class extends Migration
     {
         Schema::create('internships', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->text("title");
-            $table->text("description");
+            $table->mediumText("description");
             $table->text('city');
             $table->unsignedBigInteger('organization_id');
             $table->foreign('organization_id')->references('id')->on('organizations')->cascadeOnDelete();
-            $table->text('qualifications');
+            $table->mediumText('qualifications');
             $table->boolean('is_published')->default(0);
+            $table->boolean('is_featured')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
