@@ -28,7 +28,7 @@ class CreateOrUpdateInternshipRequest extends FormRequest
             'title' => 'required',
             'description' => 'required',
             'city' => 'required',
-            'company' => 'required',
+            'organization' => 'required|exists:organizations,id',
             'qualifications' => 'required',
             'is_published' => 'required|boolean'
         ];

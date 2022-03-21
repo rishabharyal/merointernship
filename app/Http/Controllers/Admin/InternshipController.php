@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateOrUpdateInternshipRequest;
 use App\Models\Internship;
+use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,9 +33,10 @@ class InternshipController extends Controller
             $internships = $internships->where('user_id', $user->id);
         }
 
-        $internships = $internships->paginate(15);
+        $internships = $internships->orderBy('id', 'DESC')->paginate(15);
+        $organizations = Organization::select('id','title')->get();
 
-        return view('admin.internships.index', compact('internships'));
+        return view('admin.internships.index', compact('internships', 'organizations'));
     }
 
     /**
@@ -61,8 +63,9 @@ class InternshipController extends Controller
         $internship->title = $request->get('title');
         $internship->description = $request->get('description');
         $internship->city = $request->get('ciry');
-        $internship->company = $request->get('company');
+        $internship->organization_id = $request->get('organization');
         $internship->qualifications = $request->get('qualifications');
+        $internship->city = $request->get('city');
         $internship->user_id = Auth::id();
         $internship->save();
 
@@ -93,8 +96,9 @@ class InternshipController extends Controller
         $internship->title = $request->get('title');
         $internship->description = $request->get('description');
         $internship->city = $request->get('ciry');
-        $internship->company = $request->get('company');
+        $internship->organization_id = $request->get('organization_id');
         $internship->qualifications = $request->get('qualifications');
+        $internship->city = $request->get('city');
         $internship->is_published = $request->get('is_published');
         $internship->save();
 

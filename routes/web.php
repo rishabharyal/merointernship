@@ -26,4 +26,5 @@ Route::namespace('Admin')->prefix('admin')->group(static function() {
     Route::resource('internship', 'InternshipController');
     Route::resource('organization', 'OrganizationController');
     Route::resource('institution', 'InstitutionController');
+    Route::resource('settings','SettingsController');
 });

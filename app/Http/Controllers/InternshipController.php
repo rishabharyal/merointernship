@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Internship;
+use App\Models\Organization;
 use Illuminate\Http\Request;
 
 class InternshipController extends Controller
@@ -14,7 +15,7 @@ class InternshipController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**

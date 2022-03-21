@@ -32,8 +32,10 @@
                 <div class="collapse show" id="home-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                         <li><a href="{{ route('internship.index') }}" class="link-dark rounded">Internships</a></li>
-                        <li><a href="#" class="link-dark rounded">Companies</a></li>
-                        <li><a href="#" class="link-dark rounded">Institutions</a></li>
+                        <li><a href="{{route('organization.index')}}" class="link-dark rounded">Companies</a></li>
+                        <li><a href="{{route('institution.index')}}" class="link-dark rounded">Institutions</a></li>
+
+
                     </ul>
                 </div>
             </li>
@@ -44,7 +46,7 @@
                 </button>
                 <div class="collapse" id="account-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">Settings</a></li>
+                        <li><a href="{{route('settings.index')}}" class="link-dark rounded">Settings</a></li>
                         <li><a href="#" class="link-dark rounded">Sign out</a></li>
                     </ul>
                 </div>

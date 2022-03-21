@@ -3,31 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Institution;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class InstitutionController extends Controller
+class SettingsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, Institution $institutions)
+    public function index()
     {
-        if ($request->has('search')) {
-            $search = $request->get('search');
-            $institutions = $institutions->where('title', 'LIKE', "%$search%")
-                ->orWhere('description', 'LIKE', "%$search%")
-                ->orWhere('address', 'LIKE', "%$search%")
-                ->orWhere('city', 'LIKE', "%$search%")
-                ->orWhere('type','LIKE',"%$search%");
-        }
 
-        $institutions = $institutions->orderBy('id','DESC')->paginate(15);
-
-        return view('admin.institution.index', compact( 'institutions'));
+        return view('admin.settings.index');
     }
 
     /**
@@ -48,7 +37,7 @@ class InstitutionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -80,9 +69,10 @@ class InstitutionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user=Auth::user();
+       
     }
 
     /**
@@ -91,10 +81,8 @@ class InstitutionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Institution $institution)
+    public function destroy($id)
     {
-        $institution->delete();
-
-        return redirect()->back()->with("success", "Institution deleted successfully");
+        //
     }
 }
