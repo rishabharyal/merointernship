@@ -75,16 +75,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                        <div class="col-lg-2 col-sm-12 col-md-3">
-                                            <div class="form-group">
-                                                <label for="organization">Organization ID</label>
-                                                <select class="form-control" name="organization" id="organization">
-                                                    @foreach($organizations as $organization)
-                                                        <option value="{{$organization->id}}" > {{$organization->title}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
                                     <div class="col-lg-2 col-sm-12 col-md-3">
                                         <div class="form-group">
                                             <label for="city">City</label>
@@ -98,13 +88,12 @@
 
                                         </div>
                                     </div>
-
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-            </li>
+            </div>
         </div>
 
         <div class="row">

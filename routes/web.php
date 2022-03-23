@@ -13,13 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/internships/{type}/{city?}', 'InternshipController@index')->where('type', 'city|fields');;
 
 Route::namespace('Admin')->prefix('admin')->group(static function() {
     Route::get('/', 'DashboardController@index');

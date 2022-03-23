@@ -13,9 +13,13 @@ class InternshipController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($city, Internship $internships)
     {
+        if ($city) {
+            $internships = $internships->where('city', $city);
+        }
 
+        return view('internships.index', compact('internships'));
     }
 
     /**
