@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text("title");
             $table->mediumText("description");
             $table->text('city');
+            $table->text('industry');
             $table->unsignedBigInteger('organization_id');
             $table->foreign('organization_id')->references('id')->on('organizations')->cascadeOnDelete();
             $table->mediumText('qualifications');

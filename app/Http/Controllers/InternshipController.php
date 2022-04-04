@@ -13,13 +13,44 @@ class InternshipController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($city, Internship $internships)
+    public function index()
     {
-        if ($city) {
-            $internships = $internships->where('city', $city);
+        $internships = Internship::paginate(4);
+        return view('internships.index', compact('internships'));
+    }
+
+    public function show_by_city($city)
+    {
+        $internships = Internship::where('city', $city)->get();
+        return view('internships.index', compact('internships'));
+    }
+
+    public function show_by_title($title)
+    {
+        $internships = Internship::where('title', $title)->get();
+        return view('internships.index', compact('internships'));
+    }
+
+    public function show_by_industry($industry)
+    {
+        $internships = Internship::where('industry', $industry)->get();
+        return view('internships.index', compact('internships'));
+    }
+
+    public function search(Request $request)
+    {
+        $city = DB::table('internships')->select('city')->distinct()->get()->pluck('city');
+        $industry = DB::table('internships')->select('industry')->distinct()->get()->pluck('industry');
+
+        $internship = Internship::query();
+
+        if($request->filled('city')) {
+            $internship->where('city', $request->city);
         }
 
-        return view('internships.index', compact('internships'));
+        if($request->filled('industry')) {
+            $internship->where('industry', $request->industry);
+        }
     }
 
     /**

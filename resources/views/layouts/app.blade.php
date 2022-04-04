@@ -39,10 +39,12 @@
                     <div class="row">
                         <div class="col-md-4 p-0">
                             <div class="nav-logo">
-                                <img src="images/logo.png" class="nav-logo-img">
-                                <label class="nav-logo-label mi-label px-3">
-                                    Mero Internship
-                                </label>
+                                <a href="{{ route('home')}} ">
+                                    <img src="images/logo.png" class="nav-logo-img">
+                                    <label class="nav-logo-label mi-label px-3">
+                                        Mero Internship
+                                    </label>
+                                </a>    
                             </div>
                         </div>
                         <div class="col-md-5 mi-pmy-menu text-end p-0">
@@ -193,8 +195,8 @@
                         About Mero Internship
                     </h3>
                     <div class="mi-footer-links">
-                        <a href="#" class="mi-footer-a d-block">About us</a>
-                        <a href="#" class="mi-footer-a d-block">Contact us</a>
+                        <a href="{{ action('HomeController@about') }}" class="mi-footer-a d-block">About us</a>
+                        <a href="{{ action('HomeController@contact') }}" class="mi-footer-a d-block">Contact us</a>
                         <a href="#" class="mi-footer-a d-block">We're hiring</a>
                         <a href="#" class="mi-footer-a d-block">Hire interns for your company</a>
                         <a href="#" class="mi-footer-a d-block">Team Diary</a>
@@ -222,6 +224,8 @@
                                 <i class="fa-brands fa-facebook-f"></i>
                             </span>
                             <a href="#">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a><a href="#">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         </div>
@@ -233,14 +237,7 @@
                     <div class="mi-footer-logo d-inline-block">
                         <img src="images/logo.png">
                     </div>
-                    <!-- <div class="mi-fooer-icon">
-                        <a class="px-3" href="#">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </span>
-                        <a href="#">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                    </div> -->
+
                     <div class="text-end mi-sec-footer-cpy">
                         <span><i class="fa-regular fa-copyright"></i></span> Copyright 2020 Mero Internship
                     </div>

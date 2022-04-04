@@ -21,6 +21,7 @@ class InternshipFactory extends Factory
         return [
             'title' => $this->faker->jobTitle,
             'city' => $this->faker->city,
+            'industry' => $this->faker->word,
             'description' => $this->faker->paragraph(5),
             'qualifications' => $this->faker->paragraph(5),
             'is_published' => $this->faker->boolean,
