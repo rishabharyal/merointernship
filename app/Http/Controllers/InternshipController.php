@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Internship;
 use App\Models\Organization;
 use Illuminate\Http\Request;
-
+use DB;
 class InternshipController extends Controller
 {
     /**
@@ -13,34 +13,32 @@ class InternshipController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $internships = Internship::paginate(4);
-        return view('internships.index', compact('internships'));
-    }
+    // public function index()
+    // {
+    //     $internships = Internship::paginate(4);
+    //     return view('internships.index', compact('internships'));
+    // }
 
-    public function show_by_city($city)
-    {
-        $internships = Internship::where('city', $city)->get();
-        return view('internships.index', compact('internships'));
-    }
+    // public function show_by_city($city)
+    // {
+    //     $internships = Internship::paginate(4)->where('city', $city)->get();
+    //     return view('internships.index', compact('internships'));
+    // }
 
-    public function show_by_title($title)
-    {
-        $internships = Internship::where('title', $title)->get();
-        return view('internships.index', compact('internships'));
-    }
+    // public function show_by_title($title)
+    // {
+    //     $internships = Internship::where('title', $title)->get();
+    //     return view('internships.index', compact('internships'));
+    // }
 
-    public function show_by_industry($industry)
-    {
-        $internships = Internship::where('industry', $industry)->get();
-        return view('internships.index', compact('internships'));
-    }
+    // public function show_by_industry($industry)
+    // {
+    //     $internships = Internship::where('industry', $industry)->get();
+    //     return view('internships.index', compact('internships'));
+    // }
 
-    public function search(Request $request)
+    public function index(Request $request)
     {
-        $city = DB::table('internships')->select('city')->distinct()->get()->pluck('city');
-        $industry = DB::table('internships')->select('industry')->distinct()->get()->pluck('industry');
 
         $internship = Internship::query();
 
@@ -51,6 +49,10 @@ class InternshipController extends Controller
         if($request->filled('industry')) {
             $internship->where('industry', $request->industry);
         }
+
+        return view('internships.index', [
+            'internships' => $internship->get()
+        ]);
     }
 
     /**

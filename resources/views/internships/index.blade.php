@@ -84,8 +84,9 @@
 								</div>
 							</div>
                             @endforeach
-                            {!! $internships->links() !!}
+                            {{-- {!! $internships->links() !!} --}}
                     </div>
+				</div>
 					<div class="col-md-4">
 						<div class="mi-filter-container p-3">
 							<div class="mi-filter-bdy">
@@ -189,7 +190,6 @@
 							</div>
 						</div>
 					</div>
-			</div>
-		</div>
+				</div>
 	</section>
 @endsection

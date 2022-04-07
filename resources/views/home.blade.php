@@ -15,8 +15,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <form action="" method="get">
-                            @csrf
+                        <form action="{{ action('InternshipController@index') }}" method="get">
                                 <div class="mi-search-container text-center">
                                     <div class="mi-search-form text-end w-75 mx-auto my-5">
                                         <div class="mi-search-input py-2">
@@ -31,7 +30,7 @@
                                             <label class="px-3">in </label>
                                             <select class="py-3 px-4 w-50 mi-select-hero">
                                                 @foreach ($cities as $city)
-                                                <option>{{ $city->city }}</option>
+                                                <option>{{ $city }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -39,16 +38,18 @@
                                             <label class="px-3">on category of </label>
                                             <select class="py-3 px-4 mi-select-hero">
                                                 @foreach ($industries as $industry)
-                                                <option>{{ $industry->industry }}</option>
+                                                <option>{{ $industry }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="mi-form-submit">
-                                            <a href="#" class="mi-pmy-btn mi-pmy-btn-in ">
+                                            {{-- <a href="{{ action('InternshipController@index') }}" class="mi-pmy-btn mi-pmy-btn-in ">
                                                 <span> <i class="fa-solid fa-magnifying-glass"></i></span>
-                                                Search
-                                            </a>
+                                               Search 
+                                            </a> --}}
+                                            <span> <i class="fa-solid fa-magnifying-glass"></i></span>
+                                               <button type="submit">Search</button> 
                                     </div>
                                 </div>
                         </form>
