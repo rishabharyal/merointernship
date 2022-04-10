@@ -327,11 +327,15 @@
                                     <p class="mi-p">
                                         lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in ze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font.
                                     </p>
-                                    <div class="mi-form my-5">
-                                        <input type="text" name="Name" placeholder="Enter Your Name" class="mi-input" />
-                                        <input type="Email" name="Email" placeholder="Enter Your Email" class="mi-input" />
-                                        <a href="#" class="mi-pmy-btn mi-pmy-btn d-block text-center mx-auto my-3">Submit</a>
-                                    </div>
+                                    <form action="{{ action('SubscriberController@store')}}" method="post">
+                                    @csrf
+                                        <div class="mi-form my-5">
+                                            <input type="text" name="name" placeholder="Enter Your Name" class="mi-input" />
+                                            <input type="Email" name="email" placeholder="Enter Your Email" class="mi-input" />
+                                            <button type="submit">Submit</button>
+                                            {{-- <a href="#" class="mi-pmy-btn mi-pmy-btn d-block text-center mx-auto my-3">Submit</a> --}}
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

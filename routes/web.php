@@ -28,6 +28,7 @@ Route::get('/contact-us', [App\Http\Controllers\HomeController::class, 'contact'
 // Route::get('/internships/search', 'InternshipController@search');
 
 Route::resource('internship', 'InternshipController');
+Route::resource('subscriber', 'SubscriberController');
 
 Route::namespace('Admin')->prefix('admin')->group(static function() {
     Route::get('/', 'DashboardController@index');
