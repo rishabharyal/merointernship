@@ -9,38 +9,23 @@ use DB;
 class InternshipController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $type
+     * @param $value
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
      */
-    // public function index()
-    // {
-    //     $internships = Internship::paginate(4);
-    //     return view('internships.index', compact('internships'));
-    // }
-
-    // public function show_by_city($city)
-    // {
-    //     $internships = Internship::paginate(4)->where('city', $city)->get();
-    //     return view('internships.index', compact('internships'));
-    // }
-
-    // public function show_by_title($title)
-    // {
-    //     $internships = Internship::where('title', $title)->get();
-    //     return view('internships.index', compact('internships'));
-    // }
-
-    // public function show_by_industry($industry)
-    // {
-    //     $internships = Internship::where('industry', $industry)->get();
-    //     return view('internships.index', compact('internships'));
-    // }
-
-    public function index(Request $request)
+    public function index(Request $request, $type = "", $value = ""): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-
         $internship = Internship::query();
+
+        $allowedTypes = [
+            'city' => 'city',
+            'industry' => 'industry'
+        ];
+
+        if ($type && $value && isset($allowedTypes[$type])) {
+            $internship = $internship->where($type, $value);
+        }
 
         if($request->filled('city')) {
             $internship->where('city', $request->city);
@@ -50,8 +35,10 @@ class InternshipController extends Controller
             $internship->where('industry', $request->industry);
         }
 
+        $internship = $internship->orderBy('is_featured', 'DESC');
+
         return view('internships.index', [
-            'internships' => $internship->get()
+            'internships' => $internship->paginate(12)
         ]);
     }
 

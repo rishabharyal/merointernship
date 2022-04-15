@@ -20,7 +20,7 @@
                                     <div class="mi-search-form text-end w-75 mx-auto my-5">
                                         <div class="mi-search-input py-2">
                                             <label class="px-3">I am looking for </label>
-                                            <select class="py-3 px-4 mi-select mi-select-hero ">
+                                            <select name="type" class="py-3 px-4 mi-select mi-select-hero ">
                                                 <option>Internship</option>
                                                 <option>Online Traning</option>
                                                 <option>Fresher Job</option>
@@ -28,7 +28,7 @@
                                         </div>
                                         <div class="mi-search-input py-2 ">
                                             <label class="px-3">in </label>
-                                            <select class="py-3 px-4 w-50 mi-select-hero">
+                                            <select name="city" class="py-3 px-4 w-50 mi-select-hero">
                                                 @foreach ($cities as $city)
                                                 <option>{{ $city }}</option>
                                                 @endforeach
@@ -36,7 +36,7 @@
                                         </div>
                                         <div class="mi-search-input py-2">
                                             <label class="px-3">on category of </label>
-                                            <select class="py-3 px-4 mi-select-hero">
+                                            <select name="industry" class="py-3 px-4 mi-select-hero">
                                                 @foreach ($industries as $industry)
                                                 <option>{{ $industry }}</option>
                                                 @endforeach
@@ -46,10 +46,10 @@
                                     <div class="mi-form-submit">
                                             {{-- <a href="{{ action('InternshipController@index') }}" class="mi-pmy-btn mi-pmy-btn-in ">
                                                 <span> <i class="fa-solid fa-magnifying-glass"></i></span>
-                                               Search 
+                                               Search
                                             </a> --}}
                                             <span> <i class="fa-solid fa-magnifying-glass"></i></span>
-                                               <button type="submit">Search</button> 
+                                               <button type="submit">Search</button>
                                     </div>
                                 </div>
                         </form>
@@ -70,7 +70,7 @@
                     <div class="col-md-12">
                         <div class="mi-inside-container ">
                             <div class="row">
-                                <div class="col-md-4 mi-cat-row">
+                                <div class="offset-2 col-md-4 mi-cat-row">
                                     <div class="mi-row-container text-center">
                                         <div class="mi-row-bdy">
                                             <div class="mi-row-img py-3">
@@ -78,18 +78,6 @@
                                             </div>
                                             <h3>
                                                 Internship
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mi-cat-row">
-                                    <div class="mi-row-container text-center">
-                                        <div class="mi-row-bdy">
-                                            <div class="mi-row-img py-3">
-                                                <img src="images/onlinetraining.png">
-                                            </div>
-                                            <h3>
-                                                Online Training
                                             </h3>
                                         </div>
                                     </div>
@@ -220,7 +208,7 @@
                 <h3 class="mi-header my-5">
                     Featured Internships
                 </h3>
-                
+
                 <div class="mi-featured-row row my-3">
                     @foreach ($featured_internships as $internship)
                     <div class="mi-card mi-listing-card col-md-4">
@@ -281,8 +269,8 @@
                     </div>
                     @endforeach
                 </div>
-                
-                
+
+
             </div>
         </div>
     </section>

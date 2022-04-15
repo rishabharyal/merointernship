@@ -50,4 +50,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Internship::class);
     }
+
+    /**
+     * Return the only company that this user has
+     * Typically used for company users as
+     * admins have multiple companies
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function company(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Organization::class);
+    }
 }

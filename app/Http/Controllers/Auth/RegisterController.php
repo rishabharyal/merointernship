@@ -74,6 +74,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'city' => $data['city'],
             'address' => $data['address'],
+            'user_type' => $data['user_type']
         ]);
 
         $user->assignRole(ucfirst($data['user_type']));

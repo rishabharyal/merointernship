@@ -84,9 +84,13 @@
 								</div>
 							</div>
                             @endforeach
-                            {{-- {!! $internships->links() !!} --}}
-                    </div>
-				</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                {!! $internships->links() !!}
+                            </div>
+                        </div>
+				    </div>
 					<div class="col-md-4">
 						<div class="mi-filter-container p-3">
 							<div class="mi-filter-bdy">
@@ -146,8 +150,8 @@
 											<input type="checkbox" name="Checkbox">
 											<span class="slider round"></span>
 										</label>
-										
-									</div> 
+
+									</div>
 									<div class="filter-clear text-end ">
 										<a href="#" class="mi-filter-btn">Clear all</a>
 									</div>
