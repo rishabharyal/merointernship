@@ -14,7 +14,7 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        //
+        return view('organizations.index');
     }
 
     /**
@@ -35,7 +35,19 @@ class OrganizationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newImageName = time() . $request->title . '.' + $request->logo->extension();
+        $request->logo->move(public_path('images/logos'), $newImageName);
+        
+        $organization = Organization::create( [
+            'title' => $request->input('title'),
+            'address' => $request->input('address'),
+            'city' => $request->input('city'),
+            'description' => $request->input('description'),
+            'logo_path' => $newImageName
+        ]);
+
+        return redirect('/');
+        
     }
 
     /**

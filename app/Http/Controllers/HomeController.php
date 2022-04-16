@@ -26,10 +26,7 @@ class HomeController extends Controller
     {
         $cities = DB::table('internships')->select('city')->distinct()->get()->pluck('city');
         $industries = DB::table('internships')->select('industry')->distinct()->get()->pluck('industry');
-        // $cities = Internship::select('city')->distinct()->get();
-        // $industries = Internship::select('industry')->distinct()->get();
-        $featured_internships = Internship::inRandomOrder()->limit(3)->get();
-        return view('home', compact('cities', 'industries', 'featured_internships'));
+        return view('home', compact('cities', 'industries'));
     }
 
     public function contact()

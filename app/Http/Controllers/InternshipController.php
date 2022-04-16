@@ -17,6 +17,8 @@ class InternshipController extends Controller
     public function index(Request $request, $type = "", $value = ""): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $internship = Internship::query();
+        $cities = DB::table('internships')->select('city')->distinct()->get()->pluck('city');
+        $industries = DB::table('internships')->select('industry')->distinct()->get()->pluck('industry');
 
         $allowedTypes = [
             'city' => 'city',
@@ -35,10 +37,32 @@ class InternshipController extends Controller
             $internship->where('industry', $request->industry);
         }
 
+        if($request->filled('duration')) {
+            $internship->where('duration', $request->duration);
+        }
+
+        if($request->filled('is_wfh')) {
+            $internship->where('is_wfh', $request->is_wfh);
+        }
+
+        if($request->filled('is_parttime')) {
+            $internship->where('is_parttime', $request->is_parttime);
+        }
+
+        if($request->filled('is_for_women')) {
+            $internship->where('is_for_women', $request->is_for_women);
+        }
+
+        if($request->filled('is_with_joboffer')) {
+            $internship->where('is_with_joboffer', $request->is_with_joboffer);
+        }
+
         $internship = $internship->orderBy('is_featured', 'DESC');
 
         return view('internships.index', [
-            'internships' => $internship->paginate(12)
+            'internships' => $internship->paginate(12),
+            'cities' => $cities,
+            'industries' => $industries
         ]);
     }
 

@@ -22,13 +22,13 @@
                                             <label class="px-3">I am looking for </label>
                                             <select name="type" class="py-3 px-4 mi-select mi-select-hero ">
                                                 <option>Internship</option>
-                                                <option>Online Traning</option>
                                                 <option>Fresher Job</option>
                                             </select>
                                         </div>
                                         <div class="mi-search-input py-2 ">
                                             <label class="px-3">in </label>
                                             <select name="city" class="py-3 px-4 w-50 mi-select-hero">
+                                                <option selected disabled>Please select a city</option>
                                                 @foreach ($cities as $city)
                                                 <option>{{ $city }}</option>
                                                 @endforeach
@@ -37,6 +37,7 @@
                                         <div class="mi-search-input py-2">
                                             <label class="px-3">on category of </label>
                                             <select name="industry" class="py-3 px-4 mi-select-hero">
+                                                <option selected disabled>Please select a category</option>
                                                 @foreach ($industries as $industry)
                                                 <option>{{ $industry }}</option>
                                                 @endforeach
@@ -199,78 +200,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <section class="mi-section-featured mx-5">
-        <div class="mi-container-featured">
-            <div class="mi-bdy-featured text-center">
-                <h3 class="mi-header my-5">
-                    Featured Internships
-                </h3>
-
-                <div class="mi-featured-row row my-3">
-                    @foreach ($featured_internships as $internship)
-                    <div class="mi-card mi-listing-card col-md-4">
-                        <div class="mi-card-container m-2">
-                            <div class="mi-card-bdy p-3">
-                                <div class="mi-card-logo">
-                                    <img src="images/cardlg.png">
-                                </div>
-                                <div class="mi-card-loc text-end">
-                                    <label class="mi-card-loc-label">{{ $internship->city }} <span><i class="fa-solid fa-location-dot"></i></span> </label>
-                                    <label class="mi-card-loc-label-cmp"> {{ $internship->organization->title }} </label>
-                                </div>
-                                <div class="mi-card-content p-3">
-                                    <h4 class="mi-card-content-header">
-                                        Content Writer (Gadget-oriented)
-                                    </h4>
-                                    <div class="p-3 mi-card-detail-container">
-                                        <div class="mi-card-detail p">
-                                            <span>
-                                                <img src="images/cal.png">
-                                                DURATION
-                                            </span>
-                                            <label>3 Months</label>
-                                        </div>
-                                        <div class="mi-card-detail">
-                                            <span>
-                                                <img src="images/time.png">
-                                                TIME
-                                            </span>
-                                            <label>11am-5pm</label>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 mi-card-detail-container">
-                                        <div class="mi-card-detail">
-                                            <span>
-                                                <img src="images/sal.png">
-                                                SALARY
-                                            </span>
-                                            <label>Nogotiable</label>
-                                        </div>
-                                        <div class="mi-card-detail">
-                                            <span>
-                                                <img src="images/date.png">
-                                                DATELINE
-                                            </span>
-                                            <label>26 Oct’ 21</label>
-                                        </div>
-                                    </div>
-                                    <label class="mi-card-badge">
-                                        Internship
-                                    </label>
-                                    <div class="mi-card-btn text-end">
-                                        <a href="#" class="mi-sec-btn"> View Details >></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-
-
             </div>
         </div>
     </section>

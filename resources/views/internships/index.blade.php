@@ -47,7 +47,7 @@
 														<img src="images/cal.png">
 														DURATION
 													</span>
-													<label>3 Months</label>
+													<label>{{ $internship->duration }} Months</label>
 												</div>
 												<div class="mi-card-detail">
 													<span>
@@ -98,99 +98,84 @@
 									<i class="fa-solid fa-filter"></i>
 									Filter
 								</h3>
-								<div class="mi-filter-content">
-									<div class="filter-input">
-										<label>Category</label>
-										<input type="text" name="Category" placeholder="e.g Marketing" >
-									</div>
-									<div class="filter-input">
-										<label>Location</label>
-										<select>
-											<option>Select Location</option>
-											<option>Hetauda</option>
-											<option>Kathmandu</option>
-											<option>Chitwan</option>
-										</select>
-									</div>
-									<div class="filter-input filter-slider">
-										<label>Include work from home also</label>
-										<label class="switch">
-											<input type="checkbox" name="Checkbox">
-											<span class="slider round"></span>
-										</label>
-									</div>
-									<div class="filter-input filter-slider">
-										<label>Part-time</label>
-										<label class="switch">
-											<input type="checkbox" name="Checkbox">
-											<span class="slider round"></span>
-										</label>
-									</div>
-									<div class="filter-input filter-slider filter-range">
-										<label>Desired minimum monthly salary</label>
-											<!-- <div class="slidecontainer">
-											  <input type="range" min="0" max="1000" value="50" class="range-slider " id="myRange">
-											</div> -->
-									</div>
-									<div class="filter-input">
-										<label>Max. duration (months)</label>
-										<input type="text" name="Category" placeholder="Choose Duration" class="w-75 d-block my-2 mx-0  ">
-									</div>
+								<form action="{{ action('InternshipController@index') }}" method="get">
+									<div class="mi-filter-content">
+										<div class="filter-input">
+											<label>Type</label>
+											<select name="type">
+													<option>Internship</option>
+													<option>Fresher Job</option>
+											</select>
+										</div>
+										<div class="filter-input">
+											<label>Category</label>
+											<select name="industry">
+												<option selected disabled>Please select a category</option>
+												@foreach ($industries as $industry)
+												<option>{{ $industry }}</option>
+												@endforeach
+											</select>
+										</div>
+										<div class="filter-input">
+											<label>Location</label>
+											<select name="city">
+												<option selected disabled>Please select a city</option>
+												@foreach ($cities as $city)
+												<option>{{ $city }}</option>
+												@endforeach
+											</select>
+										</div>
+										<div class="filter-input filter-slider">
+											<label>Include work from home also</label>
+											<label class="switch">
+												<input type="checkbox" name="is_wfh">
+												<span class="slider round"></span>
+											</label>
+										</div>
+										<div class="filter-input filter-slider">
+											<label>Part-time</label>
+											<label class="switch">
+												<input type="checkbox" name="is_parttime">
+												<span class="slider round"></span>
+											</label>
+										</div>
+										<div class="filter-input filter-slider filter-range">
+											<label>Desired minimum monthly salary</label>
+												<!-- <div class="slidecontainer">
+												<input type="range" min="0" max="1000" value="50" class="range-slider " id="myRange">
+												</div> -->
+										</div>
+										<div class="filter-input">
+											<label>Max. duration (months)</label>
+											<input type="text" name="duration" placeholder="Choose Duration" class="w-75 d-block my-2 mx-0  ">
+										</div>
 
-									<div class="filter-input filter-slider">
-										<label>Internships for women </label>
-										<label class="switch">
-											<input type="checkbox" name="Checkbox">
-											<span class="slider round"></span>
-										</label>
-									</div>
-									<div class="filter-input filter-slider">
-										<label>Internships with job offer</label>
-										<label class="switch">
-											<input type="checkbox" name="Checkbox">
-											<span class="slider round"></span>
-										</label>
+										<div class="filter-input filter-slider">
+											<label>Internships for women </label>
+											<label class="switch">
+												<input type="checkbox" name="is_for_women">
+												<span class="slider round"></span>
+											</label>
+										</div>
+										<div class="filter-input filter-slider">
+											<label>Internships with job offer</label>
+											<label class="switch">
+												<input type="checkbox" name="is_with_joboffer">
+												<span class="slider round"></span>
+											</label>
 
+										</div>
+										<div class="filter-clear text-end ">
+											<a href="#" class="mi-filter-btn">Clear all</a>
+										</div>
+										<div class="mi-form-submit text-center my-5">
+											<a href="#" class="mi-pmy-btn mi-pmy-btn-in ">
+												<span> <i class="fa-solid fa-magnifying-glass"></i></span>
+												<button type="submit">Search</button>
+											</a>
+										</div>
 									</div>
-									<div class="filter-clear text-end ">
-										<a href="#" class="mi-filter-btn">Clear all</a>
-									</div>
-								</div>
-								<label class="mi-seperator">
-									OR
-								</label>
-								<div class="mi-filter-search">
-									<div class="mi-search-input py-2">
-										<label class="px-3">I am looking for </label>
-										<select class="mi-select mi-select-hero ">
-											<option>Internship</option>
-											<option>Online Traning</option>
-											<option>Fresher Job</option>
-										</select>
-									</div>
-									<div class="mi-search-input py-2 ">
-										<label class="px-3">in </label>
-										<select class="  mi-select-hero">
-											<option>Kathmandu </option>
-											<option>Hetauda</option>
-											<option>Lalitpur</option>
-										</select>
-									</div>
-									<div class="mi-search-input py-2">
-										<label class="px-3">on category of </label>
-										<select class="mi-select-hero">
-											<option>Graphic designing</option>
-											<option>Graphic designing</option>
-											<option>Developer</option>
-										</select>
-									</div>
-									<div class="mi-form-submit text-center my-5">
-										<a href="#" class="mi-pmy-btn mi-pmy-btn-in ">
-											<span> <i class="fa-solid fa-magnifying-glass"></i></span>
-											Search
-										</a>
-									</div>
-								</div>
+								</form>		
 							</div>
 						</div>
 					</div>

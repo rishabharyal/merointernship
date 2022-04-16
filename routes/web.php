@@ -21,18 +21,16 @@ Route::middleware('is-company-registered')->group(function() {
     Route::get('/about-us', [App\Http\Controllers\HomeController::class, 'about']);
     Route::get('/contact-us', [App\Http\Controllers\HomeController::class, 'contact']);
 
-//Internship
-// Route::get('/internships', 'InternshipController@index');
- Route::get('/internships/{type}/{value}', 'InternshipController@index');
-// Route::get('/internships/search', 'InternshipController@search');
+    //Internship
+    // Route::get('/internships', 'InternshipController@index');
+    Route::get('/internships/{type}/{value}', 'InternshipController@index');
+    // Route::get('/internships/search', 'InternshipController@search');
 
     Route::resource('internship', 'InternshipController');
     Route::resource('subscriber', 'SubscriberController');
 });
 
-Route::get('company/intro', function() {
-    dd('Add your company details here..');
-})->middleware(['auth', 'company']);
+Route::get('company/intro', 'OrganizationController@index')->middleware(['auth', 'company']);
 
 Route::namespace('Admin')->prefix('admin')->group(static function() {
     Route::get('/', 'DashboardController@index');
