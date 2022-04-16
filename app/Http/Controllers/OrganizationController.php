@@ -35,16 +35,19 @@ class OrganizationController extends Controller
      */
     public function store(Request $request)
     {
-        $newImageName = time() . $request->title . '.' + $request->logo->extension();
-        $request->logo->move(public_path('images/logos'), $newImageName);
-        
-        $organization = Organization::create( [
-            'title' => $request->input('title'),
-            'address' => $request->input('address'),
-            'city' => $request->input('city'),
-            'description' => $request->input('description'),
-            'logo_path' => $newImageName
-        ]);
+        // $newImageName = time() . $request->title . '.' . $request->logo;
+        // $request->logo->move(public_path('images/logos'), $newImageName);
+    
+        $organization = new Organization;
+
+        $organization->title = $request->title;
+        $organization->address = $request->address;
+        $organization->city = $request->city;
+        $organization->description = $request->description;
+        // $organization->user_id = //
+        $organization->logo_path = $request->logo;
+
+        $organization->save();
 
         return redirect('/');
         

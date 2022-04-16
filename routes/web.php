@@ -31,6 +31,7 @@ Route::middleware('is-company-registered')->group(function() {
 });
 
 Route::get('company/intro', 'OrganizationController@index')->middleware(['auth', 'company']);
+Route::resource('organization', 'OrganizationController');
 
 Route::namespace('Admin')->prefix('admin')->group(static function() {
     Route::get('/', 'DashboardController@index');
