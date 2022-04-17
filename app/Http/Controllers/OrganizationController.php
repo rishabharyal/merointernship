@@ -50,7 +50,7 @@ class OrganizationController extends Controller
 
         $organization->save();
 
-        return redirect('/company/internship');
+        return redirect('/home');
         
     }
 

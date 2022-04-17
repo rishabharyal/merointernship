@@ -6,6 +6,8 @@ use App\Models\Internship;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
+
 class InternshipController extends Controller
 {
     /**
@@ -88,14 +90,25 @@ class InternshipController extends Controller
      */
     public function store(Request $request, Internship $internship)
     {
+        $internship->user_id = Auth::id();
         $internship->title = $request->get('title');
         $internship->description = $request->get('description');
-        $internship->city = $request->get('ciry');
-        $internship->organization_id = $request->get('organization_id');
-        $internship->qualifications = $request->get('qualifications');
         $internship->city = $request->get('city');
+        $internship->industry = $request->get('industry');
+        $internship->organization_id = 101;
+        $internship->qualifications = $request->get('qualifications');
         $internship->is_published = $request->get('is_published');
+        $internship->is_featured = $request->get('is_featured');
+        $internship->type = $request->get('type');
+        $internship->duration = $request->get('duration');
+        $internship->is_wfh = $request->get('is_wfh');
+        $internship->is_parttime = $request->get('is_parttime');
+        $internship->is_for_women = $request->get('is_for_women');
+        $internship->is_with_joboffer = $request->get('is_with_joboffer');
+
         $internship->save();
+
+        return redirect()->back()->with('success', 'Internship added successfully');
     }
 
     /**
@@ -106,7 +119,7 @@ class InternshipController extends Controller
      */
     public function show(Internship $internship)
     {
-        //
+        return view('internships.show', compact('internship'));
     }
 
     /**
@@ -117,7 +130,7 @@ class InternshipController extends Controller
      */
     public function edit(Internship $internship)
     {
-        //
+        return view('internships.edit', compact('internship'));
     }
 
     /**
@@ -129,7 +142,25 @@ class InternshipController extends Controller
      */
     public function update(Request $request, Internship $internship)
     {
-        //
+        $internship->user_id = Auth::id();
+        $internship->title = $request->get('title');
+        $internship->description = $request->get('description');
+        $internship->city = $request->get('city');
+        $internship->industry = $request->get('industry');
+        $internship->organization_id = 101;
+        $internship->qualifications = $request->get('qualifications');
+        $internship->is_published = $request->get('is_published');
+        $internship->is_featured = $request->get('is_featured');
+        $internship->type = $request->get('type');
+        $internship->duration = $request->get('duration');
+        $internship->is_wfh = $request->get('is_wfh');
+        $internship->is_parttime = $request->get('is_parttime');
+        $internship->is_for_women = $request->get('is_for_women');
+        $internship->is_with_joboffer = $request->get('is_with_joboffer');
+
+        $internship->save();
+        
+        return redirect()->back()->with('success', 'Internship added successfully');
     }
 
     /**
@@ -140,6 +171,8 @@ class InternshipController extends Controller
      */
     public function destroy(Internship $internship)
     {
-        //
+        $internship->delete();
+
+        return redirect()->back()->with('success', 'Internship deleted successfully!');
     }
 }

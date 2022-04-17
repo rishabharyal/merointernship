@@ -36,6 +36,33 @@
                                     </div>
                                     <div class="col-lg-2 col-sm-12 col-md-3">
                                         <div class="form-group">
+                                            <label for="type">Type</label>
+                                            <select name="type" id="type" class="form-control">
+                                                <option value="internship">Internship</option>
+                                                <option value="freshjob">Fresher Job</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-md-3">
+                                        <div class="form-group">
+                                            <label for="industry">Category</label>
+                                            <input type="text" class="form-control" name="industry" placeholder="" id="industry" value="{{ old('industry') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-md-3">
+                                        <div class="form-group">
+                                            <label for="city">City</label>
+                                            <input type="text" class="form-control" name="city" placeholder="" id="city" value="{{ old('city') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-md-3">
+                                        <div class="form-group">
+                                            <label for="duration">Duration</label>
+                                            <input type="text" class="form-control" name="duration" placeholder="" id="duration" value="{{ old('duration') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-md-3">
+                                        <div class="form-group">
                                             <label for="is_published">Status</label>
                                             <select name="is_published" id="is_published" class="form-control">
                                                 <option value="0">Not Published</option>
@@ -51,21 +78,6 @@
                                                 <option value="1">Featured</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-2 col-sm-12 col-md-3">
-                                        <div class="form-group">
-                                            <label for="city">City</label>
-                                            <input type="text" class="form-control" name="city" placeholder="" id="city" value="{{ old('city') }}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-2 col-sm-12 col-md-3">
-                                        <div class="form-group">
-                                            <label for="duration">Duration</label>
-                                            <input type="text" class="form-control" name="duration" placeholder="" id="duration" value="{{ old('duration') }}">
-                                        </div>
-
                                     </div>
                                     <div class="col-lg-2 col-sm-12 col-md-3">
                                         <label for="is_wfh">Work From Home</label>
@@ -103,18 +115,8 @@
                                     </div>
                                     <div class="col-lg-2 col-sm-12 col-md-3">
                                         <div class="form-group">
-                                            <label for="type">Type</label>
-                                            <select name="type" id="type" class="form-control">
-                                                <option value="internship">Internship</option>
-                                                <option value="freshjob">Fresher Job</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-sm-12 col-md-3">
-                                        <div class="form-group">
                                         <br>
                                             <button type="submit" class="btn btn-primary">Add</button>
-
                                         </div>
                                     </div>
                                 </div>
@@ -125,7 +127,7 @@
             </div>
         </div>
 
-        {{-- <div class="row">
+        <!-- {{-- <div class="row">
             <div class="col-12 pt-2">
                 <h5>All Internships</h5>
                 <table class="table table-striped table-bordered">
@@ -166,6 +168,6 @@
             </div>
         </div>
 
-        {!! $internships->links() !!} --}}
+        {!! $internships->links() !!} --}} -->
     </section>
 @endsection
