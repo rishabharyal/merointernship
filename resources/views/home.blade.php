@@ -15,14 +15,14 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <form action="{{ action('InternshipController@index') }}" method="get">
+                        <form id="search" action="{{ action('InternshipController@index') }}" method="get">
                                 <div class="mi-search-container text-center">
                                     <div class="mi-search-form text-end w-75 mx-auto my-5">
                                         <div class="mi-search-input py-2">
                                             <label class="px-3">I am looking for </label>
                                             <select name="type" class="py-3 px-4 mi-select mi-select-hero ">
-                                                <option>Internship</option>
-                                                <option>Fresher Job</option>
+                                                <option value="internship">Internship</option>
+                                                <option value="freshjob">Fresher Job</option>
                                             </select>
                                         </div>
                                         <div class="mi-search-input py-2 ">
@@ -45,12 +45,10 @@
                                         </div>
                                     </div>
                                     <div class="mi-form-submit">
-                                            {{-- <a href="{{ action('InternshipController@index') }}" class="mi-pmy-btn mi-pmy-btn-in ">
+                                            <a href="#" class="mi-pmy-btn mi-pmy-btn-in " onclick="document.getElementById('search').submit()">
                                                 <span> <i class="fa-solid fa-magnifying-glass"></i></span>
                                                Search
-                                            </a> --}}
-                                            <span> <i class="fa-solid fa-magnifying-glass"></i></span>
-                                               <button type="submit">Search</button>
+                                            </a>
                                     </div>
                                 </div>
                         </form>
@@ -244,13 +242,12 @@
                                     <p class="mi-p">
                                         lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in ze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font.
                                     </p>
-                                    <form action="{{ action('SubscriberController@store')}}" method="post">
+                                    <form id="subscribe" action="{{ action('SubscriberController@store')}}" method="post">
                                     @csrf
                                         <div class="mi-form my-5">
                                             <input type="text" name="name" placeholder="Enter Your Name" class="mi-input" />
                                             <input type="Email" name="email" placeholder="Enter Your Email" class="mi-input" />
-                                            <button type="submit">Submit</button>
-                                            {{-- <a href="#" class="mi-pmy-btn mi-pmy-btn d-block text-center mx-auto my-3">Submit</a> --}}
+                                            <a href="#" onclick="document.getElementById('subscribe').submit()" class="mi-pmy-btn mi-pmy-btn d-block text-center mx-auto my-3">Submit</a>
                                         </div>
                                     </form>
                                 </div>

@@ -44,7 +44,7 @@ class InternshipController extends Controller
      */
     public function create(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-        return view('amdin.internships.create');
+        return view('admin.internships.create');
     }
 
     /**

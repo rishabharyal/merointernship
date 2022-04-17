@@ -37,6 +37,10 @@ class InternshipController extends Controller
             $internship->where('industry', $request->industry);
         }
 
+        if($request->filled('type')) {
+            $internship->where('type', $request->type);
+        }
+
         if($request->filled('duration')) {
             $internship->where('duration', $request->duration);
         }
@@ -73,7 +77,7 @@ class InternshipController extends Controller
      */
     public function create()
     {
-        //
+        return view('internships.create');
     }
 
     /**
@@ -82,9 +86,16 @@ class InternshipController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Internship $internship)
     {
-        //
+        $internship->title = $request->get('title');
+        $internship->description = $request->get('description');
+        $internship->city = $request->get('ciry');
+        $internship->organization_id = $request->get('organization_id');
+        $internship->qualifications = $request->get('qualifications');
+        $internship->city = $request->get('city');
+        $internship->is_published = $request->get('is_published');
+        $internship->save();
     }
 
     /**

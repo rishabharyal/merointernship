@@ -30,8 +30,11 @@ Route::middleware('is-company-registered')->group(function() {
     Route::resource('subscriber', 'SubscriberController');
 });
 
-Route::get('company/intro', 'OrganizationController@index')->middleware(['auth', 'company']);
-Route::resource('organization', 'OrganizationController');
+Route::middleware(['auth', 'company'])->group(function() {
+    Route::get('company/intro', 'OrganizationController@index');
+    Route::get('company/internship', 'InternshipController@create');
+    Route::resource('organization', 'OrganizationController');
+});
 
 Route::namespace('Admin')->prefix('admin')->group(static function() {
     Route::get('/', 'DashboardController@index');

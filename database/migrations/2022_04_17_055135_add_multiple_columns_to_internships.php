@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('internships', function (Blueprint $table) {
-            $table->unsignedBigInteger('duration')->default(3);
+            $table->unsignedBigInteger('duration')->nullable();
             $table->boolean('is_wfh')->default(0);
             $table->boolean('is_parttime')->default(0);
             $table->boolean('is_for_women')->default(0);

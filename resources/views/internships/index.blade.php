@@ -98,13 +98,13 @@
 									<i class="fa-solid fa-filter"></i>
 									Filter
 								</h3>
-								<form action="{{ action('InternshipController@index') }}" method="get">
+								<form id="filter" action="{{ action('InternshipController@index') }}" method="get">
 									<div class="mi-filter-content">
 										<div class="filter-input">
 											<label>Type</label>
 											<select name="type">
-													<option>Internship</option>
-													<option>Fresher Job</option>
+													<option value="internship">Internship</option>
+													<option value="freshjob">Fresher Job</option>
 											</select>
 										</div>
 										<div class="filter-input">
@@ -128,14 +128,14 @@
 										<div class="filter-input filter-slider">
 											<label>Include work from home also</label>
 											<label class="switch">
-												<input type="checkbox" name="is_wfh">
+												<input type="checkbox" name="is_wfh" value="1">
 												<span class="slider round"></span>
 											</label>
 										</div>
 										<div class="filter-input filter-slider">
 											<label>Part-time</label>
 											<label class="switch">
-												<input type="checkbox" name="is_parttime">
+												<input type="checkbox" name="is_parttime" value="1">
 												<span class="slider round"></span>
 											</label>
 										</div>
@@ -153,14 +153,14 @@
 										<div class="filter-input filter-slider">
 											<label>Internships for women </label>
 											<label class="switch">
-												<input type="checkbox" name="is_for_women">
+												<input type="checkbox" name="is_for_women" value="1">
 												<span class="slider round"></span>
 											</label>
 										</div>
 										<div class="filter-input filter-slider">
 											<label>Internships with job offer</label>
 											<label class="switch">
-												<input type="checkbox" name="is_with_joboffer">
+												<input type="checkbox" name="is_with_joboffer" value="1">
 												<span class="slider round"></span>
 											</label>
 
@@ -169,9 +169,9 @@
 											<a href="#" class="mi-filter-btn">Clear all</a>
 										</div>
 										<div class="mi-form-submit text-center my-5">
-											<a href="#" class="mi-pmy-btn mi-pmy-btn-in ">
+											<a href="#" class="mi-pmy-btn mi-pmy-btn-in " onclick="document.getElementById('filter').submit()">
 												<span> <i class="fa-solid fa-magnifying-glass"></i></span>
-												<button type="submit">Search</button>
+												Search
 											</a>
 										</div>
 									</div>

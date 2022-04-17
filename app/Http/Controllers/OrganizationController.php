@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Organization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrganizationController extends Controller
 {
@@ -37,19 +38,19 @@ class OrganizationController extends Controller
     {
         // $newImageName = time() . $request->title . '.' . $request->logo;
         // $request->logo->move(public_path('images/logos'), $newImageName);
-    
+        
         $organization = new Organization;
 
         $organization->title = $request->title;
         $organization->address = $request->address;
         $organization->city = $request->city;
         $organization->description = $request->description;
-        // $organization->user_id = //
+        $organization->user_id = Auth::id();
         $organization->logo_path = $request->logo;
 
         $organization->save();
 
-        return redirect('/');
+        return redirect('/company/internship');
         
     }
 
