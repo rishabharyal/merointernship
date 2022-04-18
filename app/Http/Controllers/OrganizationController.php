@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Plank\Mediable\Facades\MediaUploader;
 
 class OrganizationController extends Controller
 {
@@ -49,6 +50,11 @@ class OrganizationController extends Controller
         $organization->logo_path = $request->logo;
 
         $organization->save();
+
+        if ($request->has('logo')) {
+            $media = MediaUploader::fromSource($request->file('logo'))->upload();
+            $organization->attachMedia($media);
+        }
 
         return redirect('/home');
         

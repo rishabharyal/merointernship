@@ -33,7 +33,7 @@ Route::middleware('is-company-registered')->group(function() {
 Route::middleware(['auth', 'company'])->group(function() {
     Route::get('company/intro', 'OrganizationController@index');
     Route::get('/home', 'InternshipController@create');
-    Route::resource('internship', 'InternshipController');
+    Route::get('/home/internships', 'InternshipController@show');
     Route::resource('organization', 'OrganizationController');
 });
 

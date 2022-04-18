@@ -63,6 +63,24 @@
                                     </div>
                                     <div class="col-lg-2 col-sm-12 col-md-3">
                                         <div class="form-group">
+                                            <label for="time_for">Time From</label>
+                                            <input type="time" class="form-control" name="time_from" id="time_from">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-md-3">
+                                        <div class="form-group">
+                                            <label for="time_to">Time To</label>
+                                            <input type="time" class="form-control" name="time_to" id="time_to">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-md-3">
+                                        <div class="form-group">
+                                            <label for="deadline">Deadline</label>
+                                            <input type="date" name="deadline" id="deadline">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-md-3">
+                                        <div class="form-group">
                                             <label for="is_published">Status</label>
                                             <select name="is_published" id="is_published" class="form-control">
                                                 <option value="0">Not Published</option>

@@ -21,8 +21,9 @@
                                         <div class="mi-search-input py-2">
                                             <label class="px-3">I am looking for </label>
                                             <select name="type" class="py-3 px-4 mi-select mi-select-hero ">
-                                                <option value="internship">Internship</option>
-                                                <option value="freshjob">Fresher Job</option>
+                                                <option selected disabled>Please select a type</option>
+												<option value="internship">Internship</option>
+												<option value="freshjob">Fresher Job</option>
                                             </select>
                                         </div>
                                         <div class="mi-search-input py-2 ">

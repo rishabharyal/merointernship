@@ -54,7 +54,7 @@
 														<img src="images/time.png">
 														TIME
 													</span>
-													<label>11am-5pm</label>
+													<label>{{ $internship->time_from }} - {{ $internship->time_to}}</label>
 												</div>
 											</div>
 											<div class="p-3 mi-card-detail-container">
@@ -70,7 +70,7 @@
 														<img src="images/date.png">
 														DATELINE
 													</span>
-													<label>26 Oct’ 21</label>
+													<label>{{ $internship->deadline }}</label>
 												</div>
 											</div>
 											<label class="mi-card-badge">
@@ -103,8 +103,9 @@
 										<div class="filter-input">
 											<label>Type</label>
 											<select name="type">
-													<option value="internship">Internship</option>
-													<option value="freshjob">Fresher Job</option>
+												<option selected disabled>Please select a type</option>
+												<option value="internship">Internship</option>
+												<option value="freshjob">Fresher Job</option>
 											</select>
 										</div>
 										<div class="filter-input">

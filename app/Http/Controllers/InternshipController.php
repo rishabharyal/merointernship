@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Internship;
 use App\Models\Organization;
 use Illuminate\Http\Request;
@@ -95,12 +96,15 @@ class InternshipController extends Controller
         $internship->description = $request->get('description');
         $internship->city = $request->get('city');
         $internship->industry = $request->get('industry');
-        $internship->organization_id = 101;
+        $internship->organization_id = Organization::select('id')->where('user_id', Auth::id())->pluck('id')->first();
         $internship->qualifications = $request->get('qualifications');
-        $internship->is_published = $request->get('is_published');
-        $internship->is_featured = $request->get('is_featured');
         $internship->type = $request->get('type');
         $internship->duration = $request->get('duration');
+        $internship->time_from = $request->get('time_from');
+        $internship->time_to = $request->get('time_to');
+        $internship->deadline = $request->get('deadline');
+        $internship->is_published = $request->get('is_published');
+        $internship->is_featured = $request->get('is_featured');
         $internship->is_wfh = $request->get('is_wfh');
         $internship->is_parttime = $request->get('is_parttime');
         $internship->is_for_women = $request->get('is_for_women');
@@ -117,9 +121,12 @@ class InternshipController extends Controller
      * @param  \App\Models\Internship  $internship
      * @return \Illuminate\Http\Response
      */
-    public function show(Internship $internship)
+    public function show(Internship $internships)
     {
-        return view('internships.show', compact('internship'));
+        $internships = $internships->where('user_id', Auth::id());
+        return view('internships.show', [
+            'internships' => $internships->paginate(12)
+        ]);
     }
 
     /**
@@ -147,12 +154,15 @@ class InternshipController extends Controller
         $internship->description = $request->get('description');
         $internship->city = $request->get('city');
         $internship->industry = $request->get('industry');
-        $internship->organization_id = 101;
+        $internship->organization_id = Organization::select('id')->where('user_id', Auth::id())->pluck('id')->first();
         $internship->qualifications = $request->get('qualifications');
-        $internship->is_published = $request->get('is_published');
-        $internship->is_featured = $request->get('is_featured');
         $internship->type = $request->get('type');
         $internship->duration = $request->get('duration');
+        $internship->time_from = $request->get('time_from');
+        $internship->time_to = $request->get('time_to');
+        $internship->deadline = $request->get('deadline');
+        $internship->is_published = $request->get('is_published');
+        $internship->is_featured = $request->get('is_featured');
         $internship->is_wfh = $request->get('is_wfh');
         $internship->is_parttime = $request->get('is_parttime');
         $internship->is_for_women = $request->get('is_for_women');
