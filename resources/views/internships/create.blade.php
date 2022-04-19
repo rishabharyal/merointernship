@@ -38,8 +38,8 @@
                                         <div class="form-group">
                                             <label for="type">Type</label>
                                             <select name="type" id="type" class="form-control">
-                                                <option value="internship">Internship</option>
-                                                <option value="freshjob">Fresher Job</option>
+                                                <option value="Internship">Internship</option>
+                                                <option value="Fresher Job">Fresher Job</option>
                                             </select>
                                         </div>
                                     </div>
@@ -59,6 +59,16 @@
                                         <div class="form-group">
                                             <label for="duration">Duration</label>
                                             <input type="text" class="form-control" name="duration" placeholder="" id="duration" value="{{ old('duration') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-md-3">
+                                        <div class="form-group">
+                                            <label for="organization_id">Organization</label>
+                                            <select name="organization_id" id="organization_id" class="form-control">
+                                                @foreach ($organizations as $organization)
+                                                <option value="{{ $organization->id }}">{{ $organization->title }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-sm-12 col-md-3">
@@ -141,6 +151,9 @@
                             </form>
                         </div>
                     </div>
+                </div>
+                <div>
+                    <a href="{{ action('InternshipController@show') }}">Show Internships</a>
                 </div>
             </div>
         </div>

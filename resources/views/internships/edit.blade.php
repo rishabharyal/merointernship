@@ -60,6 +60,16 @@
                                 </div>
                                 <div class="col-lg-2 col-sm-12 col-md-3">
                                     <div class="form-group">
+                                        <label for="organization_id">Organization</label>
+                                        <select name="organization_id" id="organization_id" class="form-control">
+                                            @foreach ($organizations as $organization)
+                                            <option value="{{ $organization->id }}">{{ $organization->title }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-sm-12 col-md-3">
+                                    <div class="form-group">
                                         <label for="time_for">Time From</label>
                                         <input type="time" class="form-control" name="time_from" id="time_from" value="{{ $internship->time_from }}">
                                     </div>

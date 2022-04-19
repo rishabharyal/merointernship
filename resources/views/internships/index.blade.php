@@ -74,7 +74,7 @@
 												</div>
 											</div>
 											<label class="mi-card-badge">
-												Internship
+												{{ $internship->type }}
 											</label>
 											<div class="mi-card-btn text-end">
 												<a href="#" class="mi-sec-btn"> View Details >></a>
@@ -104,8 +104,8 @@
 											<label>Type</label>
 											<select name="type">
 												<option selected disabled>Please select a type</option>
-												<option value="internship">Internship</option>
-												<option value="freshjob">Fresher Job</option>
+												<option value="Internship">Internship</option>
+												<option value="Fresher Job">Fresher Job</option>
 											</select>
 										</div>
 										<div class="filter-input">

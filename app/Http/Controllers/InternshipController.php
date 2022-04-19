@@ -80,7 +80,9 @@ class InternshipController extends Controller
      */
     public function create()
     {
-        return view('internships.create');
+        $organizations = Organization::where('user_id', Auth::id())->get();
+        // dd($organizations);
+        return view('internships.create', compact('organizations'));
     }
 
     /**
@@ -96,7 +98,8 @@ class InternshipController extends Controller
         $internship->description = $request->get('description');
         $internship->city = $request->get('city');
         $internship->industry = $request->get('industry');
-        $internship->organization_id = Organization::select('id')->where('user_id', Auth::id())->pluck('id')->first();
+        // $internship->organization_id = Organization::select('id')->where('user_id', Auth::id())->pluck('id')->first();
+        $internship->organization_id = $request->get('organization_id');
         $internship->qualifications = $request->get('qualifications');
         $internship->type = $request->get('type');
         $internship->duration = $request->get('duration');
@@ -154,7 +157,8 @@ class InternshipController extends Controller
         $internship->description = $request->get('description');
         $internship->city = $request->get('city');
         $internship->industry = $request->get('industry');
-        $internship->organization_id = Organization::select('id')->where('user_id', Auth::id())->pluck('id')->first();
+        // $internship->organization_id = Organization::select('id')->where('user_id', Auth::id())->pluck('id')->first();
+        $internship->organization_id = $request->get('organization_id');
         $internship->qualifications = $request->get('qualifications');
         $internship->type = $request->get('type');
         $internship->duration = $request->get('duration');
