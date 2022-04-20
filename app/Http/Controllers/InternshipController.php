@@ -189,4 +189,10 @@ class InternshipController extends Controller
 
         return redirect()->back()->with('success', 'Internship deleted successfully!');
     }
+
+    public function detail($id)
+    {
+        $internship = Internship::find($id);
+        return view('internships.details', compact('internship'));
+    }
 }

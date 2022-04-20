@@ -77,7 +77,7 @@
 												{{ $internship->type }}
 											</label>
 											<div class="mi-card-btn text-end">
-												<a href="#" class="mi-sec-btn"> View Details >></a>
+												<a href="{{ action('InternshipController@detail', $internship->id) }}" class="mi-sec-btn"> View Details >></a>
 											</div>
 										</div>
 									</div>

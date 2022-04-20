@@ -24,6 +24,7 @@ Route::middleware('is-company-registered')->group(function() {
     //Internship
     // Route::get('/internships', 'InternshipController@index');
     Route::get('/internships/{type}/{value}', 'InternshipController@index');
+    Route::get('/internships/{id}', 'InternshipController@detail');
     // Route::get('/internships/search', 'InternshipController@search');
     Route::resource('account', 'AccountController');
     Route::resource('internship', 'InternshipController');
