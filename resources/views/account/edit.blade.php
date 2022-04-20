@@ -16,9 +16,12 @@
                 <label for="Username">Address</label>
                 <input type="text" name="address" id="address" value="{{ $user->address }}">
                 <label for="Username">Education Level</label>
-                <input type="text" name="education_level" id="education_level" value="{{ $user->education_level }}">
+                <input type="text" name="educational_level" id="educational_level" value="{{ $user->educational_level }}">
                 <label for="Username">User Type</label>
-                <input type="text" name="user_type" id="user_type" value="{{ $user->user_type }}">
+                <select name="user_type" id="user_type">
+                    <option value="company">Company</option>
+                    <option value="user">User</option>
+                </select>
                 {{ method_field('PUT') }}
                 <button type="submit">Update</button>
             </form>

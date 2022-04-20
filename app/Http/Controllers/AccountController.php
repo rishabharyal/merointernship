@@ -74,9 +74,16 @@ class AccountController extends Controller
     {
         $id = Auth::id();
         $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
         $user->phone_number = $request->phone_number;
+        $user->city = $request->city;
+        $user->address = $request->address;
+        $user->educational_level = $request->educational_level;
+        $user->user_type = $request->user_type;
         $user->save();
 
+        return view('account.index', compact('user'));
     }
 
     /**

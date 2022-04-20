@@ -7,6 +7,7 @@ use App\Models\Internship;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 use DB;
+use Faker\Provider\ar_EG\Internet;
 use Illuminate\Support\Facades\Auth;
 
 class InternshipController extends Controller
@@ -81,7 +82,6 @@ class InternshipController extends Controller
     public function create()
     {
         $organizations = Organization::where('user_id', Auth::id())->get();
-        // dd($organizations);
         return view('internships.create', compact('organizations'));
     }
 
@@ -98,7 +98,6 @@ class InternshipController extends Controller
         $internship->description = $request->get('description');
         $internship->city = $request->get('city');
         $internship->industry = $request->get('industry');
-        // $internship->organization_id = Organization::select('id')->where('user_id', Auth::id())->pluck('id')->first();
         $internship->organization_id = $request->get('organization_id');
         $internship->qualifications = $request->get('qualifications');
         $internship->type = $request->get('type');
@@ -140,7 +139,8 @@ class InternshipController extends Controller
      */
     public function edit(Internship $internship)
     {
-        return view('internships.edit', compact('internship'));
+        $organizations = Organization::where('user_id', Auth::id())->get();
+        return view('internships.edit', compact('internship', 'organizations'));
     }
 
     /**
@@ -150,14 +150,14 @@ class InternshipController extends Controller
      * @param  \App\Models\Internship  $internship
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Internship $internship)
+    public function update(Request $request, $id)
     {
+        $internship = Internship::find($id);
         $internship->user_id = Auth::id();
         $internship->title = $request->get('title');
         $internship->description = $request->get('description');
         $internship->city = $request->get('city');
         $internship->industry = $request->get('industry');
-        // $internship->organization_id = Organization::select('id')->where('user_id', Auth::id())->pluck('id')->first();
         $internship->organization_id = $request->get('organization_id');
         $internship->qualifications = $request->get('qualifications');
         $internship->type = $request->get('type');

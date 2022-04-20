@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td>Education Level</td>
-                    <td>{{ $user->education_level }}</td>
+                    <td>{{ $user->educational_level }}</td>
                 </tr>
                 <tr>
                     <td>User Type</td>

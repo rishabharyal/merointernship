@@ -9,8 +9,9 @@
                             <strong>Edit Internship</strong>
                     </div>
                     <div class="card-body">
-                        <form action="{{ action('InternshipController@store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ action('InternshipController@update', $internship->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
+                            {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-lg-2 col-sm-12 col-md-3">
                                     <div class="form-group">
@@ -141,7 +142,8 @@
                                 <div class="col-lg-2 col-sm-12 col-md-3">
                                     <div class="form-group">
                                     <br>
-                                        <button type="submit" class="btn btn-primary">Add</button>
+                                        {{ method_field('PUT') }}
+                                        <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </div>
                             </div>
@@ -151,48 +153,5 @@
                 </div>
             </div>
         </div>
-
-        <!-- {{-- <div class="row">
-            <div class="col-12 pt-2">
-                <h5>All Internships</h5>
-                <table class="table table-striped table-bordered">
-                    <tr>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>Requirements</th>
-                        <th>Description</th>
-                        <th>Is published?</th>
-                        <th>Is featured?</th>
-                        <th>Organization_Name</th>
-                        <th style="width: 100px">Action</th>
-                    </tr>
-            @foreach($internships as $internship)
-                <tr>
-                    <td>{{ $internship->id }}</td>
-                    <td>{{ $internship->title }}</td>
-                    <td>{{ $internship->qualifications }}</td>
-                    <td>{{ $internship->description }}</td>
-                    <td>{{$internship->is_published? "Yes" :"No"}}</td>
-                    <td>{{$internship->is_featured? "Yes" :"No" }}</td>
-                    <td>{{$internship->organization->title}}</td>
-                    <td>
-                        <form action="{{ action('Admin\InternshipController@destroy', $internship->id) }}" method="Post">
-                            @method('DELETE')
-                            @csrf
-                            <a class="btn btn-outline-info btn-sm" title="Edit" href="{{ action('Admin\InternshipController@edit', $internship->id) }}">
-                                ✍️
-                            </a>
-                            <button class="btn btn-outline-danger btn-sm" title="Delete">
-                                ❌
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-                </table>
-            </div>
-        </div>
-
-        {!! $internships->links() !!} --}} -->
     </section>
 @endsection
