@@ -39,7 +39,7 @@ class OrganizationController extends Controller
     {
         // $newImageName = time() . $request->title . '.' . $request->logo;
         // $request->logo->move(public_path('images/logos'), $newImageName);
-        
+
         $organization = new Organization;
 
         $organization->title = $request->title;
@@ -57,7 +57,7 @@ class OrganizationController extends Controller
         }
 
         return redirect('/home');
-        
+
     }
 
     /**

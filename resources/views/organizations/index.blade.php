@@ -12,7 +12,7 @@
 								<h3 class="mi-header">
 									Add your company details here:
 								</h3>
-								<form action="{{ action('OrganizationController@store') }}" method="post">
+								<form action="{{ action('OrganizationController@store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
 									<div class="mi-filter-content">
 										<div class="filter-input">
@@ -40,7 +40,7 @@
 											</a>
 										</div>
 									</div>
-								</form>		
+								</form>
 							</div>
 						</div>
 					</div>
