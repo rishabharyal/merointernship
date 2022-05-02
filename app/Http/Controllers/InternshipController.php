@@ -82,7 +82,11 @@ class InternshipController extends Controller
     public function create()
     {
         $organizations = Organization::where('user_id', Auth::id())->get();
-        return view('internships.create', compact('organizations'));
+        $internships = Internship::where('user_id', Auth::id());
+        return view('internships.create', [
+            'organizations' => $organizations,
+            'internships' => $internships->paginate(12)
+        ]);
     }
 
     /**
@@ -93,6 +97,16 @@ class InternshipController extends Controller
      */
     public function store(Request $request, Internship $internship)
     {
+        $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'city' => 'required|string',
+            'industry' => 'required',
+            'organization_id' => 'required',
+            'qualifications' => 'required|string',
+            'type' => 'required'
+        ]);
+
         $internship->user_id = Auth::id();
         $internship->title = $request->get('title');
         $internship->description = $request->get('description');
@@ -102,8 +116,6 @@ class InternshipController extends Controller
         $internship->qualifications = $request->get('qualifications');
         $internship->type = $request->get('type');
         $internship->duration = $request->get('duration');
-        $internship->time_from = $request->get('time_from');
-        $internship->time_to = $request->get('time_to');
         $internship->deadline = $request->get('deadline');
         $internship->is_published = $request->get('is_published');
         $internship->is_featured = $request->get('is_featured');
@@ -114,7 +126,7 @@ class InternshipController extends Controller
 
         $internship->save();
 
-        return redirect()->back()->with('success', 'Internship added successfully');
+        return redirect('company/internships');
     }
 
     /**
@@ -152,6 +164,15 @@ class InternshipController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'city' => 'required|string',
+            'industry' => 'required',
+            'organization_id' => 'required',
+            'qualifications' => 'required|string',
+            'type' => 'required'
+        ]);
         $internship = Internship::find($id);
         $internship->user_id = Auth::id();
         $internship->title = $request->get('title');
@@ -162,8 +183,6 @@ class InternshipController extends Controller
         $internship->qualifications = $request->get('qualifications');
         $internship->type = $request->get('type');
         $internship->duration = $request->get('duration');
-        $internship->time_from = $request->get('time_from');
-        $internship->time_to = $request->get('time_to');
         $internship->deadline = $request->get('deadline');
         $internship->is_published = $request->get('is_published');
         $internship->is_featured = $request->get('is_featured');
@@ -173,8 +192,8 @@ class InternshipController extends Controller
         $internship->is_with_joboffer = $request->get('is_with_joboffer');
 
         $internship->save();
-        
-        return redirect()->back()->with('success', 'Internship added successfully');
+
+        return redirect('company/internships');
     }
 
     /**

@@ -17,19 +17,19 @@
                 <div class="mi-sec-nav-bdy py-3 mx-5">
                     <div class="row">
                         <div class="col-md-1 text-center ">
-                            <a href="{{ action('InternshipController@index', 'Kathmandu') }}">Kathmandu <span class="px-1 opacity-75"><i class="fa-solid fa-location-dot"></i></span></a>
+                            <a href="{{ url('/internships/city/Kathmandu') }}">Kathmandu <span class="px-1 opacity-75"><i class="fa-solid fa-location-dot"></i></span></a>
                         </div>
                         <div class="col-md-1 text-center ">
-                            <a href="{{ action('InternshipController@index', 'Pokhara') }}">Pokhara <span class="px-1 opacity-75"><i class="fa-solid fa-location-dot"></i></span></a>
+                            <a href="{{ url('/internships/city/Pokhara') }}">Pokhara <span class="px-1 opacity-75"><i class="fa-solid fa-location-dot"></i></span></a>
                         </div>
                         <div class="col-md-1 text-center ">
-                            <a href="{{ action('InternshipController@index', 'Butwal') }}">Butwal <span class="px-1 opacity-75"><i class="fa-solid fa-location-dot"></i></span></a>
+                            <a href="{{ url('/internships/city/Butwal') }}">Butwal <span class="px-1 opacity-75"><i class="fa-solid fa-location-dot"></i></span></a>
                         </div>
                         <div class="col-md-1 text-center ">
-                            <a href="{{ action('InternshipController@index', 'Hetauda') }}">Hetauda <span class="px-1 opacity-75"><i class="fa-solid fa-location-dot"></i></span></a>
+                            <a href="{{ url('/internships/city/Hetauda') }}">Hetauda <span class="px-1 opacity-75"><i class="fa-solid fa-location-dot"></i></span></a>
                         </div>
                         <div class="col-md-1 text-center ">
-                            <a href="{{ action('InternshipController@index', 'Chitwan') }}">Chitwan <span class="px-1 opacity-75"><i class="fa-solid fa-location-dot"></i></span></a>
+                            <a href="{{ url('/internships/city/Chitwan') }}">Chitwan <span class="px-1 opacity-75"><i class="fa-solid fa-location-dot"></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                                     <label class="nav-logo-label mi-label px-3">
                                         Mero Internship
                                     </label>
-                                </a>    
+                                </a>
                             </div>
                         </div>
                         <div class="col-md-5 mi-pmy-menu text-end p-0">
@@ -111,14 +111,6 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="mi-pmy-li d-inline-block py-2 px-3 ">
-                                    <a href="#" class="py-2 px-3 mi-nav-itm">
-                                        Online Traning
-                                        <span class="mi-arw">
-												<i class="fa-solid fa-angle-down"></i>
-											</span>
-                                    </a>
-                                </li>
                                 <li class="mi-pmy-li d-inline-block py-2 px-3">
                                     <a href="#" class="py-2 px-3 mi-nav-itm">
                                         Fresher Job
@@ -131,7 +123,7 @@
                         </div>
                         <div class="col-md-3 mi-pmy-menu text-end p-0">
                             @auth
-                                <a href="#" class="mi-pmy-btn mx-2">My Account</a>
+                                <a href="/account" class="mi-pmy-btn mx-2">My Account</a>
                                 <a href="#" class="mi-pmy-btn mx-2" onclick="document.getElementById('logout').submit()">Logout</a>
                                 <form id="logout" action="{{ action('Auth\LoginController@logout') }}" method="POST">
                                     @csrf
@@ -158,10 +150,11 @@
                         Internship by places
                     </h3>
                     <div class="mi-footer-links">
-                        <a href="{{ action('InternshipController@index', 'Kathmandu') }}" class="mi-footer-a d-block">Internship in Kathmandu</a>
-                        <a href="{{ action('InternshipController@index', 'Hetauda') }}" class="mi-footer-a d-block">Internship in Hetauda</a>
-                        <a href="{{ action('InternshipController@index', 'Butwal') }}" class="mi-footer-a d-block">Internship in Butwal</a>
-                        <a href="{{ action('InternshipController@index', 'Chitwan') }}" class="mi-footer-a d-block">Internship in Chitwan</a>
+                        <a href="{{ url('/internships/city/Kathmandu') }}" class="mi-footer-a d-block">Internship in Kathmandu</a>
+                        <a href="{{ url('/internships/city/Pokhara') }}" class="mi-footer-a d-block">Internship in Pokhara</a>
+                        <a href="{{ url('/internships/city/Hetauda') }}" class="mi-footer-a d-block">Internship in Hetauda</a>
+                        <a href="{{ url('/internships/city/Butwal') }}" class="mi-footer-a d-block">Internship in Butwal</a>
+                        <a href="{{ url('/internships/city/Chitwan') }}" class="mi-footer-a d-block">Internship in Chitwan</a>
                     </div>
                 </div>
                 <div class="mi-footer-row-content col-md-3">
@@ -169,26 +162,16 @@
                         Internship by fields
                     </h3>
                     <div class="mi-footer-links">
-                        <a href="#" class="mi-footer-a d-block">Internship in Graphics Design</a>
-                        <a href="#" class="mi-footer-a d-block">Internship in Web Development</a>
-                        <a href="#" class="mi-footer-a d-block">Internship in Free Writing</a>
-                        <a href="#" class="mi-footer-a d-block">Internship in Banks</a>
-                        <a href="#" class="mi-footer-a d-block">Internship in Ecommerce</a>
-                        <a href="#" class="mi-footer-a d-block">Internship in Digital Markerting</a>
+                        <a href="{{ url('/internships/industry/Graphics-Design') }}" class="mi-footer-a d-block">Internship in Graphics Design</a>
+                        <a href="{{ url('/internships/industry/Web-Development') }}" class="mi-footer-a d-block">Internship in Web Development</a>
+                        <a href="{{ url('/internships/industry/Free-Writing') }}" class="mi-footer-a d-block">Internship in Free Writing</a>
+                        <a href="{{ url('/internships/industry/Banks') }}" class="mi-footer-a d-block">Internship in Banks</a>
+                        <a href="{{ url('/internships/industry/Ecommerce') }}" class="mi-footer-a d-block">Internship in Ecommerce</a>
+                        <a href="{{ url('/internships/industry/Digital-Marketing') }}" class="mi-footer-a d-block">Internship in Digital Markerting</a>
                     </div>
                 </div>
                 <div class="mi-footer-row-content col-md-3">
-                    <h3 class="mi-footer-header">
-                        Internship Training
-                    </h3>
-                    <div class="mi-footer-links">
-                        <a href="#" class="mi-footer-a d-block">Digital Marketing Training</a>
-                        <a href="#" class="mi-footer-a d-block">Graphics Design Training</a>
-                        <a href="#" class="mi-footer-a d-block">Web Designing Training</a>
-                        <a href="#" class="mi-footer-a d-block">Web Development Training</a>
-                        <a href="#" class="mi-footer-a d-block">Php & Laravel Training</a>
-                        <a href="#" class="mi-footer-a d-block">Java Script Training</a>
-                    </div>
+
                 </div>
                 <div class="mi-footer-row-content col-md-3">
                     <h3 class="mi-footer-header">

@@ -4,6 +4,11 @@
     <section id="internship-crud" class="p-4">
         <div class="row">
             <div class="col-12 pt-2 pb-2 border-bottom">
+                @if($errors->any())
+                    <div class="alert alert-warning">
+                        {!! implode('', $errors->all('<li>:message</li>')) !!}
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">
                             <strong>Edit Internship</strong>
@@ -44,7 +49,15 @@
                                 <div class="col-lg-2 col-sm-12 col-md-3">
                                     <div class="form-group">
                                         <label for="industry">Category</label>
-                                        <input type="text" class="form-control" name="industry" placeholder="" id="industry" value="{{ $internship->industry }}">
+                                        <select name="industry" id="industry" value="{{ old('industry') }}">
+                                            <option selected disabled>Please select a category</option>
+                                            <option value="Graphics-Design">Graphics Design</option>
+                                            <option value="Web-Development">Web Development</option>
+                                            <option value="Free-Writing">Free Writing</option>
+                                            <option value="Banks">Banks</option>
+                                            <option value="Ecommerce">Ecommerce</option>
+                                            <option value="Digital-Marketing">Digital Marketing</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-sm-12 col-md-3">
@@ -67,18 +80,6 @@
                                             <option value="{{ $organization->id }}">{{ $organization->title }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-sm-12 col-md-3">
-                                    <div class="form-group">
-                                        <label for="time_for">Time From</label>
-                                        <input type="time" class="form-control" name="time_from" id="time_from" value="{{ $internship->time_from }}">
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-sm-12 col-md-3">
-                                    <div class="form-group">
-                                        <label for="time_to">Time To</label>
-                                        <input type="time" class="form-control" name="time_to" id="time_to" value="{{ $internship->time_to }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-sm-12 col-md-3">
@@ -149,7 +150,7 @@
                             </div>
                         </form>
                     </div>
-                
+
                 </div>
             </div>
         </div>

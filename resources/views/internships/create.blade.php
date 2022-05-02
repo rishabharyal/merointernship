@@ -4,6 +4,11 @@
     <section id="internship-crud" class="p-4">
         <div class="row">
             <div class="col-12 pt-2 pb-2 border-bottom">
+                @if($errors->any())
+                    <div class="alert alert-warning">
+                        {!! implode('', $errors->all('<li>:message</li>')) !!}
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">
                         <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
@@ -46,7 +51,15 @@
                                     <div class="col-lg-2 col-sm-12 col-md-3">
                                         <div class="form-group">
                                             <label for="industry">Category</label>
-                                            <input type="text" class="form-control" name="industry" placeholder="" id="industry" value="{{ old('industry') }}">
+                                            <select name="industry" id="industry" value="{{ old('industry') }}">
+                                                <option selected disabled>Please select a category</option>
+                                                <option value="Graphics-Design">Graphics Design</option>
+                                                <option value="Web-Development">Web Development</option>
+                                                <option value="Free-Writing">Free Writing</option>
+                                                <option value="Banks">Banks</option>
+                                                <option value="Ecommerce">Ecommerce</option>
+                                                <option value="Digital-Marketing">Digital Marketing</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-sm-12 col-md-3">
@@ -57,7 +70,7 @@
                                     </div>
                                     <div class="col-lg-2 col-sm-12 col-md-3">
                                         <div class="form-group">
-                                            <label for="duration">Duration</label>
+                                            <label for="duration">Duration (in months)</label>
                                             <input type="text" class="form-control" name="duration" placeholder="" id="duration" value="{{ old('duration') }}">
                                         </div>
                                     </div>
@@ -69,18 +82,6 @@
                                                 <option value="{{ $organization->id }}">{{ $organization->title }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-sm-12 col-md-3">
-                                        <div class="form-group">
-                                            <label for="time_for">Time From</label>
-                                            <input type="time" class="form-control" name="time_from" id="time_from">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-sm-12 col-md-3">
-                                        <div class="form-group">
-                                            <label for="time_to">Time To</label>
-                                            <input type="time" class="form-control" name="time_to" id="time_to">
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-sm-12 col-md-3">
@@ -152,53 +153,64 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <a href="{{ action('InternshipController@show') }}">Show Internships</a>
-                </div>
             </div>
         </div>
 
-        <!-- {{-- <div class="row">
+        <div class="row">
             <div class="col-12 pt-2">
                 <h5>All Internships</h5>
                 <table class="table table-striped table-bordered">
                     <tr>
-                        <th>ID</th>
                         <th>Title</th>
-                        <th>Requirements</th>
                         <th>Description</th>
+                        <th>Qualifications</th>
+                        <th>Type</th>
+                        <th>Category</th>
+                        <th>City</th>
+                        <th>Duration</th>
+                        <th>Organization Name</th>
                         <th>Is published?</th>
                         <th>Is featured?</th>
-                        <th>Organization_Name</th>
+                        <th>Is Work From Home?</th>
+                        <th>Is Part Time?</th>
+                        <th>Is For Women Only?</th>
+                        <th>Has a Job Offer?</th>
                         <th style="width: 100px">Action</th>
                     </tr>
-            @foreach($internships as $internship)
-                <tr>
-                    <td>{{ $internship->id }}</td>
-                    <td>{{ $internship->title }}</td>
-                    <td>{{ $internship->qualifications }}</td>
-                    <td>{{ $internship->description }}</td>
-                    <td>{{$internship->is_published? "Yes" :"No"}}</td>
-                    <td>{{$internship->is_featured? "Yes" :"No" }}</td>
-                    <td>{{$internship->organization->title}}</td>
-                    <td>
-                        <form action="{{ action('Admin\InternshipController@destroy', $internship->id) }}" method="Post">
-                            @method('DELETE')
-                            @csrf
-                            <a class="btn btn-outline-info btn-sm" title="Edit" href="{{ action('Admin\InternshipController@edit', $internship->id) }}">
-                                ✍️
-                            </a>
-                            <button class="btn btn-outline-danger btn-sm" title="Delete">
-                                ❌
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
+                    @foreach($internships as $internship)
+                        <tr>
+                            <td>{{ $internship->title }}</td>
+                            <td>{{ $internship->description }}</td>
+                            <td>{{ $internship->qualifications }}</td>
+                            <td>{{ $internship->type }}</td>
+                            <td>{{ $internship->industry }}</td>
+                            <td>{{ $internship->city }}</td>
+                            <td>{{ $internship->duration }}</td>
+                            <td>{{ $internship->organization->title }}</td>
+                            <td>{{ $internship->is_published? "Yes" :"No" }}</td>
+                            <td>{{ $internship->is_featured? "Yes" :"No" }}</td>
+                            <td>{{ $internship->is_wfh? "Yes" :"No" }}</td>
+                            <td>{{ $internship->is_parttime? "Yes" :"No" }}</td>
+                            <td>{{ $internship->is_for_women? "Yes" :"No" }}</td>
+                            <td>{{ $internship->is_with_joboffer? "Yes" :"No" }}</td>
+                            <td>
+                                <form action="{{ action('InternshipController@destroy', $internship->id) }}" method="Post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <a class="btn btn-outline-info btn-sm" title="Edit" href="{{ action('InternshipController@edit', $internship->id) }}">
+                                        ✍️
+                                    </a>
+                                    <button class="btn btn-outline-danger btn-sm" title="Delete">
+                                        ❌
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
 
-        {!! $internships->links() !!} --}} -->
+        {!! $internships->links() !!}
     </section>
 @endsection

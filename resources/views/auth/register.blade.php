@@ -44,7 +44,7 @@
 
                             <div class="col-md-6">
                                 <select name="user_type" id="user_type" class="form-control @error('user_type') is-invalid @enderror" required>
-                                    <option value="User">Student searching for internship</option>
+                                    <option value="user">Student searching for internship</option>
                                     <option value="company">Company looking for interns</option>
                                     <option value="college">College trying to find placements for my students</option>
                                 </select>

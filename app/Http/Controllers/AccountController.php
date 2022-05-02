@@ -72,6 +72,15 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone_number' => [''],
+            'city' => ['required', 'string', 'min:4'],
+            'address' => ['required', 'string'],
+            'educational_level' => ['string'],
+            'user_type' => ['required', 'in:user,company,college']
+        ]);
         $id = Auth::id();
         $user = User::find($id);
         $user->name = $request->name;

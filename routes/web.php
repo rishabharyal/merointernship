@@ -22,19 +22,18 @@ Route::middleware('is-company-registered')->group(function() {
     Route::get('/contact-us', [App\Http\Controllers\HomeController::class, 'contact']);
 
     //Internship
-    // Route::get('/internships', 'InternshipController@index');
     Route::get('/internships/{type}/{value}', 'InternshipController@index');
     Route::get('/internships/{id}', 'InternshipController@detail');
-    // Route::get('/internships/search', 'InternshipController@search');
+    Route::get('/company/edit', 'OrganizationController@edit');
     Route::resource('account', 'AccountController');
     Route::resource('internship', 'InternshipController');
     Route::resource('subscriber', 'SubscriberController');
+    Route::resource('organization', 'OrganizationController');
 });
 
 Route::middleware(['auth', 'company'])->group(function() {
     Route::get('company/intro', 'OrganizationController@index');
-    Route::get('/home', 'InternshipController@create');
-    Route::get('/home/internships', 'InternshipController@show');
+    Route::get('company/internships', 'InternshipController@create');
     Route::resource('organization', 'OrganizationController');
 });
 

@@ -17,19 +17,40 @@
 									<div class="mi-filter-content">
 										<div class="filter-input">
 											<label>Name of Your Company</label>
-											<input type="text" name="title" placeholder="Eg. ABC Compnay">
-										</div>
+											<input type="text" name="title" placeholder="Eg. ABC Company" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" required autocomplete="title" autofocus>
+                                            @error('title')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+
 										<div class="filter-input">
 											<label>Address</label>
-											<input type="text" name="address">
-										</div>
+											<input type="text" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                            @error('address')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
 										<div class="filter-input">
                                         <label>City</label>
-											<input type="text" name="city">
+											<input type="text" name="city" class="form-control @error('city') is-invalid @enderror" value="{{ old('city') }}" required autocomplete="city" autofocus>
+                                            @error('city')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
 										</div>
 										<div class="filter-input">
 											<label>Description</label>
-											<input type="text" name="description" placeholder="Tell us about your company">
+											<input type="text" name="description" placeholder="Tell us about your company" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}" required autocomplete="description" autofocus>
+                                            @error('description')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
 										</div>
                                         <div class="filter-input">
                                             <label>Upload Logo of Your Company</label>
@@ -37,7 +58,6 @@
                                         </div>
 										<div class="mi-form-submit text-center my-5">
 												<button type="submit">Submit</button>
-											</a>
 										</div>
 									</div>
 								</form>

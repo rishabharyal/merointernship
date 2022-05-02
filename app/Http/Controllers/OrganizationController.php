@@ -37,9 +37,12 @@ class OrganizationController extends Controller
      */
     public function store(Request $request)
     {
-        // $newImageName = time() . $request->title . '.' . $request->logo;
-        // $request->logo->move(public_path('images/logos'), $newImageName);
-
+        $request->validate([
+            'title' => 'required|string',
+            'address' => 'required|string',
+            'city' => 'required|string',
+            'description' => 'required|'
+        ]);
         $organization = new Organization;
 
         $organization->title = $request->title;
@@ -56,7 +59,7 @@ class OrganizationController extends Controller
             $organization->attachMedia($media);
         }
 
-        return redirect('/home');
+        return redirect('/account');
 
     }
 
@@ -77,9 +80,10 @@ class OrganizationController extends Controller
      * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
-    public function edit(Organization $organization)
+    public function edit()
     {
-        //
+        $organization = Organization::where('user_id', Auth::id());
+        return view('organizations.edit', compact('organization'));
     }
 
     /**
@@ -89,9 +93,31 @@ class OrganizationController extends Controller
      * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Organization $organization)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|string',
+            'address' => 'required|string',
+            'city' => 'required|string',
+            'description' => 'required|'
+        ]);
+
+        $organization = Organization::find($id);
+        $organization->title = $request->title;
+        $organization->address = $request->address;
+        $organization->city = $request->city;
+        $organization->description = $request->description;
+        $organization->user_id = Auth::id();
+        $organization->logo_path = $request->logo;
+
+        $organization->save();
+
+        if ($request->has('logo')) {
+            $media = MediaUploader::fromSource($request->file('logo'))->upload();
+            $organization->attachMedia($media);
+        }
+
+        return redirect('/account');
     }
 
     /**

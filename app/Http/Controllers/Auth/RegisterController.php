@@ -29,6 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
+
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
@@ -55,7 +56,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'city' => ['required', 'string', 'min:4'],
             'address' => ['required', 'string'],
-            'user_type' => ['required', 'in:student,company,college']
+            'user_type' => ['required', 'in:user,company,college']
         ]);
     }
 

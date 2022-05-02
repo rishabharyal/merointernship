@@ -102,10 +102,10 @@
 									<div class="mi-filter-content">
 										<div class="filter-input">
 											<label>Type</label>
-											<select name="type">
-												<option selected disabled>Please select a type</option>
-												<option value="Internship">Internship</option>
-												<option value="Fresher Job">Fresher Job</option>
+											<select name="type" value="{{ request()->has('type') ? request()->input('type') : ''}}">
+												<option disabled>Please select a type</option>
+												<option value="Internship" selected="{{ request()->input('type') == 'Internship' ? true : false }}">Internship</option>
+												<option value="Fresher Job" selected="{{ request()->input('type') == 'Fresher Job' ? true : false }}">Fresher Job</option>
 											</select>
 										</div>
 										<div class="filter-input">
@@ -176,7 +176,7 @@
 											</a>
 										</div>
 									</div>
-								</form>		
+								</form>
 							</div>
 						</div>
 					</div>
